@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-from PIL import Image
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 
@@ -41,6 +40,7 @@ h1,h2,h3,h4{
 .stSelectbox div[data-baseweb="select"]{
     background:#111827;
     border-radius:15px;
+    color:white;
 }
 
 .stSlider > div > div{
@@ -73,7 +73,7 @@ h1,h2,h3,h4{
 """, unsafe_allow_html=True)
 
 # =========================================================
-# LOAD LOGOS
+# HEADER
 # =========================================================
 
 col1, col2, col3 = st.columns([1,4,1])
@@ -199,18 +199,25 @@ c1, c2, c3 = st.columns([1,8,1])
 with c1:
     if st.button("⬅️"):
         st.session_state.slide_index -= 1
+
         if st.session_state.slide_index < 0:
             st.session_state.slide_index = len(slide_files)-1
 
 with c3:
     if st.button("➡️"):
         st.session_state.slide_index += 1
+
         if st.session_state.slide_index >= len(slide_files):
             st.session_state.slide_index = 0
 
 with c2:
     st.markdown('<div class="slide-card">', unsafe_allow_html=True)
-    st.image(slide_files[st.session_state.slide_index], use_container_width=True)
+
+    st.image(
+        slide_files[st.session_state.slide_index],
+        use_container_width=True
+    )
+
     st.markdown('</div>', unsafe_allow_html=True)
 
 # =========================================================
@@ -219,15 +226,78 @@ with c2:
 
 df = pd.read_csv("final_atig_dataset.csv")
 
+# CLEAN COLUMN NAMES
+df.columns = df.columns.str.strip()
+
 # =========================================================
-# ENCODING
+# AUTO DETECT COLUMNS
+# =========================================================
+
+material_col = None
+flux_col = None
+penetration_col = None
+current_col = None
+voltage_col = None
+speed_col = None
+
+for col in df.columns:
+
+    lower = col.lower()
+
+    if "material" in lower:
+        material_col = col
+
+    elif "flux" in lower:
+        flux_col = col
+
+    elif "penetration" in lower:
+        penetration_col = col
+
+    elif "current" in lower:
+        current_col = col
+
+    elif "voltage" in lower:
+        voltage_col = col
+
+    elif "speed" in lower:
+        speed_col = col
+
+# =========================================================
+# SAFETY CHECK
+# =========================================================
+
+required_cols = [
+    material_col,
+    flux_col,
+    penetration_col,
+    current_col,
+    voltage_col,
+    speed_col
+]
+
+if any(v is None for v in required_cols):
+
+    st.error("Dataset columns not detected properly.")
+
+    st.write("Detected columns:")
+    st.write(df.columns)
+
+    st.stop()
+
+# =========================================================
+# ENCODERS
 # =========================================================
 
 material_encoder = LabelEncoder()
 flux_encoder = LabelEncoder()
 
-df["Material_encoded"] = material_encoder.fit_transform(df["Material"])
-df["Flux_encoded"] = flux_encoder.fit_transform(df["Flux"])
+df["Material_encoded"] = material_encoder.fit_transform(
+    df[material_col]
+)
+
+df["Flux_encoded"] = flux_encoder.fit_transform(
+    df[flux_col]
+)
 
 # =========================================================
 # FEATURES
@@ -235,15 +305,16 @@ df["Flux_encoded"] = flux_encoder.fit_transform(df["Flux"])
 
 X = df[
     [
-        "Current",
-        "Voltage",
-        "TravelSpeed",
+        current_col,
+        voltage_col,
+        speed_col,
         "Material_encoded",
         "Flux_encoded"
     ]
 ]
 
-y = df["PenetrationDepth"]
+# TARGET
+y = df[penetration_col]
 
 # =========================================================
 # RANDOM FOREST MODEL
@@ -272,40 +343,73 @@ st.markdown("""
 col1, col2 = st.columns(2)
 
 with col1:
-    current = st.slider("Current (A)", 90, 160, 120)
-    voltage = st.slider("Voltage (V)", 9, 15, 12)
+
+    current = st.slider(
+        "Current (A)",
+        90,
+        160,
+        120
+    )
+
+    voltage = st.slider(
+        "Voltage (V)",
+        9,
+        15,
+        12
+    )
 
 with col2:
-    speed = st.slider("Travel Speed (mm/min)", 50, 300, 120)
+
+    speed = st.slider(
+        "Travel Speed (mm/min)",
+        50,
+        300,
+        120
+    )
 
     material = st.selectbox(
         "Material",
-        sorted(df["Material"].unique())
+        sorted(df[material_col].unique())
     )
 
 flux = st.selectbox(
     "Flux Type",
-    sorted(df["Flux"].unique())
+    sorted(df[flux_col].unique())
 )
+
+# =========================================================
+# ENCODE USER INPUT
+# =========================================================
+
+material_encoded = material_encoder.transform(
+    [material]
+)[0]
+
+flux_encoded = flux_encoder.transform(
+    [flux]
+)[0]
+
+# =========================================================
+# CREATE INPUT DATAFRAME
+# =========================================================
+
+input_data = pd.DataFrame({
+
+    current_col:[current],
+    voltage_col:[voltage],
+    speed_col:[speed],
+    "Material_encoded":[material_encoded],
+    "Flux_encoded":[flux_encoded]
+
+})
 
 # =========================================================
 # PREDICTION
 # =========================================================
 
-material_encoded = material_encoder.transform([material])[0]
-flux_encoded = flux_encoder.transform([flux])[0]
-
-input_data = pd.DataFrame({
-    "Current":[current],
-    "Voltage":[voltage],
-    "TravelSpeed":[speed],
-    "Material_encoded":[material_encoded],
-    "Flux_encoded":[flux_encoded]
-})
-
 prediction = model.predict(input_data)[0]
 
-prediction = round(prediction,2)
+prediction = round(float(prediction), 2)
 
 # =========================================================
 # HEAT INPUT
@@ -320,15 +424,23 @@ heat_input = round(
 # RELATIVE INCREASE
 # =========================================================
 
-base_df = df[df["Flux"] == "No Flux"]
+base_df = df[
+    df[flux_col].astype(str).str.lower().str.contains("no")
+]
 
 if len(base_df) > 0:
-    baseline = base_df["PenetrationDepth"].mean()
+
+    baseline = base_df[penetration_col].mean()
+
 else:
+
     baseline = prediction
 
-increase = ((prediction-baseline)/baseline)*100
-increase = round(increase,1)
+increase = (
+    ((prediction - baseline)/baseline) * 100
+)
+
+increase = round(float(increase), 1)
 
 # =========================================================
 # RESULTS
@@ -386,14 +498,15 @@ predictions = []
 for c in currents:
 
     temp_input = pd.DataFrame({
-        "Current":[c],
-        "Voltage":[voltage],
-        "TravelSpeed":[speed],
+        current_col:[c],
+        voltage_col:[voltage],
+        speed_col:[speed],
         "Material_encoded":[material_encoded],
         "Flux_encoded":[flux_encoded]
     })
 
     p = model.predict(temp_input)[0]
+
     predictions.append(p)
 
 fig = go.Figure()
