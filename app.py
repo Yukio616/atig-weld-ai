@@ -79,7 +79,10 @@ h1,h2,h3,h4{
 col1, col2, col3 = st.columns([1,4,1])
 
 with col1:
-    st.image("assets/CEG_col1.png", width=120)
+    try:
+        st.image("assets/CEG_col1.png", width=120)
+    except:
+        st.empty()
 
 with col2:
 
@@ -134,7 +137,10 @@ with col2:
     """, unsafe_allow_html=True)
 
 with col3:
-    st.image("assets/iiti.png", width=120)
+    try:
+        st.image("assets/iiti.png", width=120)
+    except:
+        st.empty()
 
 # =========================================================
 # INTRO
@@ -211,78 +217,108 @@ with c3:
             st.session_state.slide_index = 0
 
 with c2:
-    st.markdown('<div class="slide-card">', unsafe_allow_html=True)
 
-    st.image(
-        slide_files[st.session_state.slide_index],
-        use_container_width=True
-    )
+    try:
+        st.markdown('<div class="slide-card">', unsafe_allow_html=True)
 
-    st.markdown('</div>', unsafe_allow_html=True)
+        st.image(
+            slide_files[st.session_state.slide_index],
+            use_container_width=True
+        )
+
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    except:
+        st.warning("Slides not found.")
 
 # =========================================================
 # LOAD DATASET
 # =========================================================
 
-df = pd.read_csv("final_atig_dataset.csv")
+try:
+    df = pd.read_csv("final_atig_dataset.csv")
 
-# CLEAN COLUMN NAMES
+except Exception as e:
+
+    st.error("Dataset file not found.")
+    st.stop()
+
+# =========================================================
+# CLEAN COLUMNS
+# =========================================================
+
 df.columns = df.columns.str.strip()
 
 # =========================================================
-# AUTO DETECT COLUMNS
+# FORCE COLUMN MAPPING
 # =========================================================
 
-material_col = None
-flux_col = None
-penetration_col = None
-current_col = None
-voltage_col = None
-speed_col = None
-
-for col in df.columns:
-
-    lower = col.lower()
-
-    if "material" in lower:
-        material_col = col
-
-    elif "flux" in lower:
-        flux_col = col
-
-    elif "penetration" in lower:
-        penetration_col = col
-
-    elif "current" in lower:
-        current_col = col
-
-    elif "voltage" in lower:
-        voltage_col = col
-
-    elif "speed" in lower:
-        speed_col = col
+flux_col = "fluxes"
+current_col = "current_A"
+voltage_col = "voltage_V"
+speed_col = "travel_speed"
+penetration_col = "penetration_mm"
 
 # =========================================================
-# SAFETY CHECK
+# CREATE MATERIAL COLUMN
+# =========================================================
+
+if "material" not in df.columns:
+    df["material"] = "SS304"
+
+material_col = "material"
+
+# =========================================================
+# VERIFY COLUMNS
 # =========================================================
 
 required_cols = [
-    material_col,
     flux_col,
-    penetration_col,
     current_col,
     voltage_col,
-    speed_col
+    speed_col,
+    penetration_col,
+    material_col
 ]
 
-if any(v is None for v in required_cols):
+missing_cols = [c for c in required_cols if c not in df.columns]
 
-    st.error("Dataset columns not detected properly.")
+if len(missing_cols) > 0:
 
-    st.write("Detected columns:")
-    st.write(df.columns)
+    st.error(f"Missing columns: {missing_cols}")
+
+    st.write("Available columns:")
+    st.write(df.columns.tolist())
 
     st.stop()
+
+# =========================================================
+# CLEAN DATA
+# =========================================================
+
+df = df.dropna()
+
+df[current_col] = pd.to_numeric(
+    df[current_col],
+    errors='coerce'
+)
+
+df[voltage_col] = pd.to_numeric(
+    df[voltage_col],
+    errors='coerce'
+)
+
+df[speed_col] = pd.to_numeric(
+    df[speed_col],
+    errors='coerce'
+)
+
+df[penetration_col] = pd.to_numeric(
+    df[penetration_col],
+    errors='coerce'
+)
+
+df = df.dropna()
 
 # =========================================================
 # ENCODERS
@@ -292,11 +328,11 @@ material_encoder = LabelEncoder()
 flux_encoder = LabelEncoder()
 
 df["Material_encoded"] = material_encoder.fit_transform(
-    df[material_col]
+    df[material_col].astype(str)
 )
 
 df["Flux_encoded"] = flux_encoder.fit_transform(
-    df[flux_col]
+    df[flux_col].astype(str)
 )
 
 # =========================================================
@@ -313,7 +349,6 @@ X = df[
     ]
 ]
 
-# TARGET
 y = df[penetration_col]
 
 # =========================================================
@@ -321,8 +356,8 @@ y = df[penetration_col]
 # =========================================================
 
 model = RandomForestRegressor(
-    n_estimators=200,
-    max_depth=8,
+    n_estimators=300,
+    max_depth=10,
     random_state=42
 )
 
@@ -346,15 +381,15 @@ with col1:
 
     current = st.slider(
         "Current (A)",
-        90,
-        160,
+        80,
+        180,
         120
     )
 
     voltage = st.slider(
         "Voltage (V)",
-        9,
-        15,
+        8,
+        20,
         12
     )
 
@@ -362,23 +397,23 @@ with col2:
 
     speed = st.slider(
         "Travel Speed (mm/min)",
-        50,
-        300,
+        40,
+        350,
         120
     )
 
     material = st.selectbox(
         "Material",
-        sorted(df[material_col].unique())
+        sorted(df[material_col].astype(str).unique())
     )
 
 flux = st.selectbox(
     "Flux Type",
-    sorted(df[flux_col].unique())
+    sorted(df[flux_col].astype(str).unique())
 )
 
 # =========================================================
-# ENCODE USER INPUT
+# ENCODE INPUTS
 # =========================================================
 
 material_encoded = material_encoder.transform(
@@ -390,10 +425,10 @@ flux_encoded = flux_encoder.transform(
 )[0]
 
 # =========================================================
-# CREATE INPUT DATAFRAME
+# PREDICTION INPUT
 # =========================================================
 
-input_data = pd.DataFrame({
+input_df = pd.DataFrame({
 
     current_col:[current],
     voltage_col:[voltage],
@@ -407,7 +442,7 @@ input_data = pd.DataFrame({
 # PREDICTION
 # =========================================================
 
-prediction = model.predict(input_data)[0]
+prediction = model.predict(input_df)[0]
 
 prediction = round(float(prediction), 2)
 
@@ -421,26 +456,29 @@ heat_input = round(
 )
 
 # =========================================================
-# RELATIVE INCREASE
+# RELATIVE IMPROVEMENT
 # =========================================================
 
-base_df = df[
-    df[flux_col].astype(str).str.lower().str.contains("no")
-]
+try:
 
-if len(base_df) > 0:
+    base_df = df[
+        df[flux_col].astype(str).str.lower().str.contains("no")
+    ]
 
-    baseline = base_df[penetration_col].mean()
+    if len(base_df) > 0:
+        baseline = base_df[penetration_col].mean()
 
-else:
+    else:
+        baseline = prediction
 
-    baseline = prediction
+    increase = (
+        ((prediction - baseline)/baseline) * 100
+    )
 
-increase = (
-    ((prediction - baseline)/baseline) * 100
-)
+    increase = round(float(increase), 1)
 
-increase = round(float(increase), 1)
+except:
+    increase = 0
 
 # =========================================================
 # RESULTS
@@ -481,33 +519,36 @@ with m3:
     """, unsafe_allow_html=True)
 
 # =========================================================
-# GRAPH
+# PENETRATION GRAPH
 # =========================================================
 
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""
 <h1 class="glow">
-📈 Penetration Trend
+📈 AI Penetration Prediction Graph
 </h1>
 """, unsafe_allow_html=True)
 
-currents = list(range(90,161,10))
+currents = np.arange(80, 181, 5)
+
 predictions = []
 
 for c in currents:
 
-    temp_input = pd.DataFrame({
+    temp_df = pd.DataFrame({
+
         current_col:[c],
         voltage_col:[voltage],
         speed_col:[speed],
         "Material_encoded":[material_encoded],
         "Flux_encoded":[flux_encoded]
+
     })
 
-    p = model.predict(temp_input)[0]
+    pred = model.predict(temp_df)[0]
 
-    predictions.append(p)
+    predictions.append(pred)
 
 fig = go.Figure()
 
@@ -516,20 +557,28 @@ fig.add_trace(
         x=currents,
         y=predictions,
         mode='lines+markers',
-        line=dict(color='#38bdf8', width=5),
-        marker=dict(size=10)
+        name='Penetration Prediction'
     )
 )
 
 fig.update_layout(
+
     template="plotly_dark",
-    height=450,
-    title="Predicted Penetration Behavior",
+
+    title=f"Predicted Penetration vs Current ({flux})",
+
     xaxis_title="Current (A)",
+
     yaxis_title="Penetration Depth (mm)",
+
+    height=500,
+
     paper_bgcolor="#0f172a",
+
     plot_bgcolor="#111827",
+
     font=dict(color="white")
+
 )
 
 st.plotly_chart(fig, use_container_width=True)
@@ -542,11 +591,69 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""
 <h1 class="glow">
-🧠 ML Feature Importance
+🧠 Random Forest Feature Importance
 </h1>
 """, unsafe_allow_html=True)
 
-st.image("feature_importance.png", use_container_width=True)
+importance = model.feature_importances_
+
+feature_names = [
+    "Current",
+    "Voltage",
+    "Travel Speed",
+    "Material",
+    "Flux"
+]
+
+importance_df = pd.DataFrame({
+    "Feature": feature_names,
+    "Importance": importance
+})
+
+fig2 = go.Figure()
+
+fig2.add_trace(
+    go.Bar(
+        x=importance_df["Feature"],
+        y=importance_df["Importance"]
+    )
+)
+
+fig2.update_layout(
+
+    template="plotly_dark",
+
+    title="Feature Importance",
+
+    xaxis_title="Features",
+
+    yaxis_title="Importance",
+
+    height=450,
+
+    paper_bgcolor="#0f172a",
+
+    plot_bgcolor="#111827",
+
+    font=dict(color="white")
+
+)
+
+st.plotly_chart(fig2, use_container_width=True)
+
+# =========================================================
+# DATASET PREVIEW
+# =========================================================
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("""
+<h1 class="glow">
+📁 Dataset Preview
+</h1>
+""", unsafe_allow_html=True)
+
+st.dataframe(df.head(20), use_container_width=True)
 
 # =========================================================
 # EXPLANATION
@@ -566,9 +673,9 @@ border:1px solid #334155;
 
 <p style="font-size:20px; line-height:2; color:#d1d5db;">
 
-• The model uses Random Forest Machine Learning.<br><br>
+• The platform uses Random Forest Machine Learning.<br><br>
 
-• It learns penetration behavior from experimental welding data.<br><br>
+• It learns penetration behavior from literature-derived welding datasets.<br><br>
 
 • Parameters include:
 Current,
@@ -577,11 +684,10 @@ Travel Speed,
 Material Type,
 and Activated Flux Type.<br><br>
 
-• Nano oxide fluxes such as SiO₂ and TiO₂ generally improve penetration
+• Nano oxide fluxes such as TiO₂ and SiO₂ can improve penetration
 through arc constriction and Marangoni convection effects.<br><br>
 
-• The AI predicts penetration depth based on trends learned
-from the literature-derived dataset.
+• The AI predicts penetration depth based on learned welding trends.
 
 </p>
 
@@ -589,7 +695,7 @@ from the literature-derived dataset.
 """, unsafe_allow_html=True)
 
 # =========================================================
-# LINKEDIN
+# FOOTER
 # =========================================================
 
 st.markdown("<br><br>", unsafe_allow_html=True)
