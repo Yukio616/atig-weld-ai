@@ -1,0 +1,390 @@
+paper_name,current_A,voltage_V,speed_mm_min,oxygen_ppm,penetration_mm,hardness_HV,ferrite_FN,penetration_context
+Evaluation of TIG flux welding on the characteristics of stainless steel.pdf,"3, 2, 8, 80, 4, 125, 5, 18, 2, 7","2005, 8., 2005, 2005, 2005, 2005, 2005, 2005, 21., 2005",,,,,131,"The
+2
+experimentalresultsindicatedthatthe80%MnO –20%ZnOmixturecangivefullpenetrationand
+2
+also a satisfactory surface appearance for type 304 stainless steel TIG flux welds. | Keywords:Angulardistortion,dferrite,Hotcrackingsusceptibility,Stainlesssteel,TIGflux
+Introduction This concept of using a flux with TIG welding
+processes to increase weld penetration was invented in
+Fabrication of metal structures in space will require the 1960s by researchers at the Paton Electric Welding
+extensive use of various metal joining processes. | Consequently, the suitableforautogenousTIGweldsofstainlesssteelwas
+practical TIG welding technique is used in various developed and used to enhance penetration capability
+industries to produce single pass full penetration welds and weld quality. | Improvements in weld penetration capability have Experimental procedure
+long been sought in many joining processes. | There are significant increases in
+joint to be welded by means of a brush before TIG
+weldpenetrationcapability,asmuchas300%,compared
+welding."
+"Study on surface appearance, geometry size, and delta-ferrite.pdf","1, 11, 2016, 2, 2, 2, 200, 2, 200, 200","2, 2","150, 150, 150, 150, 150, 150, 150, 50, 600, 600","300, 44",,,"0.1, 3.5","2
+mixed with 80 % water/20 % acetone solution was used as Asaresult,thepenetrationdepthofTIGweldislimited.The
+flux. | The potential advantages of ZrO -aided TIG welding penetrationdepthachievableinasingle-pass,autogenousop-
+2
+were also demonstrated. | tubes to be welded, and a single-pass welding with no filler
+metalissubsequentlyperformedtoachieveahigh-penetration
+Keywords Undercutting .Fluxslag .PowderedZrO . | Theingredientofthefluxplaysakeyroleinimprovingthe
+penetrationdepthofTIGweld.Itisselectedaccordingtothe
+1Introduction metaltobewelded[5].Forinstance,afluxconsistingof6%
+Fe O , 60 % Cr O , 22 % TiO , and 12 % TiO has been
+2 3 2 3 2
+Thepenetrationdepthisanimportantqualitycharacteristicof reported for plain carbon steel [6]; a flux consisting of 30–
+metalsthataretobeweldedinasingle-passoperation[1],asit 50%TiO 2 ,25–40%SiO 2 ,10–20%Cr 2 O 3 ,5–15%NiO,and
+5–15 % CuO has been reported for austenitic stainless steel
+[7]; a flux ingredient consisting of 40–80 % B O , 5–20 %
+* Kuang-HungTseng SiO ,5–20%Cr O ,1–15%TiO ,1–15%KC 2 l,a 3 nd1–5%
+tkh@mail.npust.edu.tw 2 2 3 2
+Al O hasbeenreportedforferriticstainlesssteel[8].When
+2 3
+fluxes were used in TIG welding of steels, oxides with less
+1 InstituteofMaterialsEngineering,NationalPingtungUniversityof
+negativeΔG,exceptAl O ,wereobservedtoresultinasig-
+ScienceandTechnology,No.1,HseuhfuRd.,Neipu 2 3
+Pingtung91201,Taiwan nificant increase in penetration depth of the welds [9]. | Ultimately,
+2
+thisknowledgeinpracticewillcontributetothedevelopment
+of a multicomponent ZrO -based flux that is suitable for
+2
+Fig.1 Preparationprocessforobtainingfluxcoating
+high-speed TIG welding of steels, resulting in a higher
+penetrationdepthoftheweldwithnoundercutting."
+Multicomponent enabled MWCNTs-TiO2 nano-activating flux for controlling.pdf,"2019.107442, 2019, 200, 160, 180, 1, 6, 2, 3, 6061","4, 5, 4, 4",,200,,,,"A similar beneficial
+effect on weld depths of flux addition observed from optical micrographs, which revealed the
+E
+radiating radii of semi-circular profiles with increasing penetration. | The use of
+C
+MWCNTs provided heterogeneous nucleation that freezes the weld penetration along with
+A
+limiting the distortion, attributed to the enormous mismatch of coefficient of thermal expansion
+(CTE) with AA6061. | It is particularly
+noted that TIG welding is usually employed where full penetration could be achieved in a single
+S
+pass up to 3-4mm, otherwise double sides and multiple-passes may require on thick sections. | The only limitation of
+conventional TIG welding is the crappy weld penetration in a single pass as compared to metal
+inert gas (MIG) welding. | The first partial contribution from oxide component (TiO ) is to provide
+2
+U
+constriction to molten droplet from tube fillers and then after remaining partial effect provides an
+increase in the depth of penetration."
+Activated flux TIG welding of dissimilar SS.pdf,"202, 304, 3, 304, 8, 304, 202, 304, 1., 316","2., 4",,,"7.36, 6.28, 0.63","210, 278, 231.5, 235, 190.6, 2, 260, 279, 220.5, 210",,"MaterialsToday:Proceedings47(2021)7189–7195
+ContentslistsavailableatScienceDirect
+Materials Today: Proceedings
+journal homepage: www.elsevier.com/locate/matpr
+Activated flux TIG welding of dissimilar SS202 and SS304 alloys: Effect of
+oxide and chloride fluxes on microstructure and mechanical properties
+of joints
+Anand Baghela, Chaitanaya Sharmab, Sandeep Ratheec, Manu Srivastavad
+aDepartmentofMechanicalEngineering,AmityUniversityMadhyaPradesh,Gwalior,India
+bDepartmentofMechanicalEngineering,BITSindri,Dhanbad,India
+cDepartmentofMechanicalEngineering,NationalInstituteofTechnologySrinagar,JammuandKashmir,India
+dDepartmentofMechanicalEngineering,PDPMIndianInstituteofInformationTechnology,DesignandManufacturingJabalpur,India
+a r t i c l e i n f o a b s t r a c t
+Articlehistory: Lowdepthofpenetrationlimitstheuseoffavoredtungsteninertgas(TIG)weldingprocessforjoiningof
+Received27September2020 ferrousandnon-ferrousmetals,demandingweldbeadprofileofhighquality.Thisarticleaimstostudy
+Receivedinrevisedform6July2021 theeffectofchlorideandoxidefluxesviz.calciumchloride(CaCl )andferricoxide(Fe O )onmicro-
+2 2 3
+Accepted8July2021
+structuralandmechanicalpropertiesofTIGweldedjointsofdissimilarSS304andSS202steels.Results
+Availableonline8August2021
+reflectedthatuseofoxideandchloridefluxessignificantlyaffectstheweldbeadgeometry,beaddimen-
+sionsandpenetration.Theuseofoxidefluxresultedincompletepenetrationandapproximatelylinear
+Keywords:
+rootofweldwithgoodfusionofboththebasemetals.Fusionzoneshowedcolumnardendriticcastgrain
+ATIGwelding
+structure while coarse grain structure was obtained in heat-affected zone. | Depthofpenetration (cid:1)2020ElsevierLtd.Allrightsreserved. | To increase the DOP, oxide
+non consumable tungsten electrode with argon as shielding gas fluxes[4,6,7]andchloridefluxes[8]arealsoused.Onnormalweld
+topreventtheoxidationofweld pool.However,TIGweldinghas surfaces,increaseinwidthofbeadandDOPoccursowingtoMar-
+alimitationregardinglowdepthofpenetration(DOP).Toincrease angonieffect. | 2 2
+results in terms of improved mechanical properties and higher Table3showsphotographsoftheBMplatesafterapplyingacti-
+aspectratio[2].ForoptimizationofATIGweldingonP22steelof vatedfluxbeforeweldingaswellasafterwelding.Theapplication
+10mm thick plate process parameters are optimize as current ofFe O oxidefluxontheplateswaseasywithbrushandcovered
+2 3
+rangefrom235to270andairgapof2.2mmto2.9mmgivehigher the plates well to produce uniform red colour coating of flux on
+depthofpenetration[12].Inviewofscarcityofresearchindissim- plateswhereasbuild-upofCaCl chloridefluxobstructedproduc-
+2
+ilarsteelgradeweldjointunderA-TIGweldingofsteels,presents tionofuniformandcontinuouscoatingonplates.Theapplication
+research aims to develop dissimilar welds of SS202 and SS304 ofactivatedfluxesinfluencedtheappearanceofweldbeadsignif-
+using A-TIG welding and investigate the effect of used chloride icantly.Almostuniformweldbeadwasobtainedwhennofluxwas
+and oxide fluxes viz. | penetration."
+mechanism of ATIG on weld pool.pdf,"2, 2, 160, 80, 80, 160, 3, 80, 160, 80","2, 2",,"200, 300, 500, 120, 200, 350, 300, 350, 300",50,,,"MaterialsTransactions,Vol.43,No.11 (2002)pp.2926to2931
+(cid:1)c2002TheJapanInstituteofMetals
+EXPRESSREGULARARTICLE
+Weld Penetration and Marangoni Convection with Oxide Fluxes in GTA Welding
+ShanpingLu, Hidetoshi Fujii,HiroyukiSugiyama, Manabu Tanakaand KiyoshiNogi
+JoiningandWeldingResearchInstitute,OsakaUniversity,Ibaraki,Osaka567-0047,Japan
+ActivefluxcanmodifythefusionzonegeometrydramaticallyinGTAwelding(A-TIG).Inthepresentstudy,inordertoinvestigate
+theeffectoftheactivefluxontheMarangoniconvectionintheweldingpool,bead-on-platespecimensaremadeonSUS304stainlesssteel
+pre-placedwithsingleactiveflux,Cu2O,NiO,Cr2O3,SiO2 andTiO2 bytheGTAprocess. | Theoxygenfromthedecompositionofthefluxintheweldingpoolaltersthesurfacetensiongradientsontheweldpool
+surface,and hence,changestheMarangoniconvectiondirectionand theweldpoolpenetrationdepth. | (ReceivedAugust 19,2002;AcceptedOctober3,2002)
+Keywords: gastungstenarcwelding,weldpenetration,Marangoniconvection,oxideflux,oxygencontent
+1. | Introduction Inthisstudy,theemphasisliesintheeffectofasingleoxide
+flux on the penetration and oxygen content in the weld pool
+Gastungstenarcweldinghasbeen widelyusedinindustry after welding. | Also, the effect of the quantity of flux on the
+especially for stainless steel, titanium alloys and other non- penetration was investigated systematically."
+antoniammal2012.pdf,"2012, 1., 1, 2, 5, 5, 2, 2, 4, 7",10.5,,,,,,
+"Sci-Hub. Enhancement of activated tungsten inert gas (A-TIG) welding using multi-component TiO2-SiO2-Al2O3 hybrid flux _ Measurement, 2019.pdf","5, 07, 110, 304, 15, 50, 91, 4, 2, 150","106912, 15, 158, 152, 197.02, 194.09, 193.64, 181.76, 4, 4","82, 125, 150, 150, 82, 82, 82, 82, 82, 82",160,"3, 4.83, 7.11, 7.92","299, 210, 227",,"Measurement148(2019)106912
+ContentslistsavailableatScienceDirect
+Measurement
+journal homepage: www.elsevier.com/locate/measurement
+Enhancement of activated tungsten inert gas (A-TIG) welding using
+multi-component TiO -SiO -Al O hybrid flux
+2 2 2 3
+⇑
+Atul Babbar , Akhilesh Kumar, Vivek Jain, Dheeraj Gupta
+MechanicalEngineeringDepartment,ThaparInstituteofEngineeringandTechnology,Patiala,India
+a r t i c l e i n f o a b s t r a c t
+Articlehistory: A novel technique of using activated flux in Tungsten inert gas (TIG) welding is used in the present
+Received8December2018 investigations.Theeffectofhybridmulti-componentsurfactant(flux)isdiscussedintermsofdepthof
+Receivedinrevisedform12July2019 penetration(DOP),micro-hardness,tensilestrength,andmetallurgicaltraits.TheactivatedTIGwelding
+Accepted5August2019
+hasbeencarriedfordifferentthicknessofworkpiecematerialwiththreefactorscurrent,travelspeed,and
+Availableonline07August2019
+flowrateatthreelevels.Theresultsrevealedasignificantincreaseinthedepthofpenetrationonusing
+activatedflux.ThemaximumDOPachievedis8.283mmwithcurrent110A,speed82mm/minandflow
+Keywords:
+rateof14L/min.TheresultsobtainedfromtensiletestdemonstratesthatA-TIGweldingproduceswelds
+SS-304alloy
+withbetterstrength.Radiographyhighlightdefect-freeweldsonusingactivatedflux.Theoutcomesof
+Activatedflux
+thepresentstudyconfirmtheapplicabilityofthislow-costweldingtechniqueforjoiningSS-304stainless
+Tensilestrength
+Microhardness steelthicksheetsfortheimprovedendowment. | Depthofpenetration (cid:1)2019ElsevierLtd.Allrightsreserved. | the results revealed that full depth of penetration
+Experimentno Current(A) Speed(mm/min) Flowrate(L/min)
+canbeachievedwith50%SiO and50%MoO mixedflux.Welding
+2 3
+1 100 82 12
+of the SS-304 alloy is a thought-provoking task as molten weld
+2 105 83 13
+pool metal can inhale oxygen (O ), Nitrogen (N ), and hydrogen
+2 2 3 110 84 14
+(H 2 ),causingembrittlement[11].Tungsteninertgas(TIG)welding 4 100 83 14
+is one of the fusion welding procedures to accomplish the great 5 105 84 12
+qualityweldsforstainlesssteel.NaumannandMichler[16]carried 6 110 82 13
+7 100 84 13
+outastudyforhydrogenembrittlementoforbitalTIGweldingjoint
+8 105 82 14
+of6mmdiameterand0.85mmthicktubesofdifferentgradesaus- 9 110 83 12
+tenitic stainless steel. | Due to this, as the plate thickness increase, the number of
+tionarymeasurements,andlimitedsizemeasurementishindering passes required to accomplish in-depth penetration (DOP) also
+itsimplementationinwideraspect.Onanotherside,accuratemea- increases [21]. | Moreover,A- onthedepthofpenetrationoftheresultantweld.Itisalsoknown
+TIGweldingusesnofillerswhichmakeiteconomicalforindustrial asthermocapillaryconvection(gradientintemperature)orsurface
+applications.Themaineffectswhichareproducedbytheactivated tensiondrivenconvection(gradientinsurfacetension).InMaran-
+fluxes are on Marangoni effect, arc contraction and arc tempera- goni convection, the liquid is pulled along the pool surface from
+ture[23].HeipleandRoperin1982proposedMarangonieffectin centretotheedge.However,theMarangoniconvectioncanreverse
+Fig.4."
+Microstructure and properties of nano-SiO2 activated flux TIG (A-TIG).pdf,"925, 2, 4, 09925, 3, 21, 28, 2020, 120, 130","10.2, 10.3, 10.5, 10.7, 925, 925","100, 2","220, 220, 300",,200,,"Moreover, the oxide 4.075mm
+fluxes appear to play a prominent role in changing the fusion zone Depth of
+penetration :
+chemistry and the electric arc behavior. | 3.730mm
+[7] recommended to adopt oxide fluxes during the TIG welding as they
+Depth to width
+offer low toxicity and impart in increasing the depth of penetration Ratio : 0.915
+compared to the other activating fluxes such as fluorides and chlorides. | The welded joints ob- 5.156 mm
+tained from these fluxes imparted better tensile strength owing to the Depth of
+penetration :
+fine equiaxed grains in the fusion centreline. | Hitherto, the use of a simplified welding technique Depth of
+penetration :
+with the use of activated flux for joining Incoloy 925 and the mechanical
+5.791 mm
+behavior of the weld seams in the AW and DA requirements have not
+Depth to width :
+been documented well. | Experimental work penetration :
+5.958 mm
+Depth to width :
+Incoloy 925 plates of 5 mm thickness in the hot rolled condition was
+0.983
+employed for this investigation."
+Enhancement_of_activated_tungsten_inert.pdf,"3, 2019, 5, 3, 110, 304, 15, 50, 91, 4","15, 158, 152, 197.02, 194.09, 193.64, 197.69, 181.76, 4, 4","82, 125, 150, 150, 82, 82, 82, 82, 82, 82",160,"4.83, 7.11, 7.92","299, 210, 227",,"The effect of hybrid multi-component surfactant (flux) is discussed
+in terms of depth of penetration (DOP), micro-hardness, tensile strength, and metallurgical traits. | The results reveaFled a significant
+increase in the depth of penetration on using activated flux. | -
+Keywords: SS-304 alloy; Activated flux; Tensile strength; Microhardness; Depth of penetration;
+E
+Microstructure. | the results revealed that full depth of penetration can be achieved with 50% SiO
+2
+JOURNAL PRE-PROOF
+and 50% MoO mixed flux. | Due to this, as the plate thickness increase, the number of passes required tFo accomplish in-
+depth penetration (DOP) also increases [21]."
+Effects of shielding gas composition and activating flux on GTAW weldments.pdf,"27, 2008, 2008, 125, 80, 1, 0.3, 6, 6, 13","10, 10, 5, 2.5, 10, 10, 95.",,,,,,"Activatingfluxmaterialsconsistedofamanganeseoxidepowderandzincoxidepowdermixture.The
+Keywords: results showed that the penetration and cross-sectional area of the weld increased withthe increase
+Activatingflux
+of nitrogen added to the argon-base shielding gas. | the use of flux reduces the need for edge preparation
+andproducessingle-passfull-penetrationweld. | Gastungstenarcwelding(GTAW)isthemostimportantjoining Allfusion-weldingprocessesusuallyuseagasshieldtoprevent
+techniqueinalmostalltypesofmanufacturingindustries.GTAWis oxidationofthemoltenmetal.Pureargonisusedasashieldgasto
+suitableforweldingthinmaterialswhengoodqualityandsurface providerelativelylowspatterandastablearcinTIGwelding.Itis
+finisharerequired.Thickmaterialsrequirefull-penetrationwelds well known that nitrogen affects the weld metal microstructure
+withoneofthemajorproblemsbeingtheweldpoolgeometryof andweldpoolshape[13].Nitrogenadditionchangestheheatinput
+cast-to-cast variations in the composition of certain residual ele- andcanhavebeneficialeffectsonweldpenetrationdepth[14].How-
+ments[1,2].Thepresenceofcertainimpuritiesinausteniticstain- ever,theinvestigationoftheeffectofnitrogenadditiontotheargon-
+lesssteel,suchassulfur,oxygen,intheweldpoolcansignificantly basedshieldinggasinactivatingfluxTIGisverylimited.Toimprove
+change the welding penetration depth in GTAW [3–5]. | weld metal chemical composition, and the second factor is the
+addingofsmallquantitiesofsurface-activeelementstotheweld
+2.Experimentalprocedure
+pool[9,10].Thus,theapplicationofalayeroffluxonthesurface
+of the base metal before welding can effectively overcome the
+Austeniticstainlesssteel(SUS304)5mmthick,withthechem-
+problem of variations in weld penetration. | Each specimen was examined using optical microscopy to
+C Si Mn P S Cr Ni Fe measurethepenetrationand widthoftheweld.Moreover, a fer-
+rite-scopewasusedtomeasuretheferritenumberoftheweldme-
+0.06 0.48 1.27 0.029 0.015 18.4 8.2 Bal."
+tseng2014.pdf,"2014, 2, 100, 150, 3, 180, 2., 22.5, 2, 50","56.1, 2","140, 140, 140, 140, 140","300, 92, 70, 46, 70",,,"12, 0.4, 5.0, 0.4, 8.0, 5.8","Compared with
+microparticle SiO , the TIG welding with nanoparticle SiO has the potential benefits of
+2 2
+high joint penetration and less angular distortion in the resulting weldment. | The TIG
+welding with nanoparticle Al O does not result in a significant increase in the penetration
+2 3
+or reduction of distortion. | Compared with oxide particle size, the thermal stability of the oxide plays a significant role
+in enhancing the joint penetration capability of the weld, for the UNS S31603 stainless
+steel TIG welds made with activated oxides. | The low productivity of TIG welding results from a combination of a low
+deposition rate and shallow joint penetration. | The TIG welding with activated flux is a notable arc
+welding that can dramatically increase the joint penetration."
+Effect of post-weld heat treatment on the microstructure and tensile properties of electron-beam-welded 21st century nickel-based super alloy 686.pdf,"2018, 276, 625, 718., 718, 20, 13, 6, 686, 686",,,,,,,
+Influence of Activated flux.pdf,"6, 2, 20, 350, 140, 170, 140, 170, 170, 2","570, 8, 304., 2, 22, 22, 13.",,,"5, 6",,,"Submit your article to this journal
+Article views: 570
+View related articles
+View Crossmark data
+Citing articles: 8 View citing articles
+Full Terms & Conditions of access and use can be found at
+https://www.tandfonline.com/action/journalInformation?journalCode=lmmp20
+MaterialsandManufacturingProcesses,30:1115–1123,2015
+Copyright#Taylor&FrancisGroup,LLC
+ISSN:1042-6914print=1532-2475online
+DOI:10.1080/10426914.2014.973591
+Influence of Current and Shielding Gas in TiO Flux Activated TIG
+2
+Welding on Different Graded Steels
+Surinder Tathgir, Anirban Bhattacharya, and Tarun Kumar Bera
+Mechanical Engineering Department, Thapar University, Patiala, Punjab, India
+Intungsteninertgas(TIG)welding,limiteddepthofpenetrationcanbeachievedduringsinglepasswelding.Toachievethedesireddepth
+ofpenetration,thespeedofweldingneedstobesignificantlyreducedandhence,theproductivitydecreases.Inthepresentwork,theeffectof
+TiO activatedfluxonpenetrationisevaluatedfordifferentworkpiecesnamelyAISI1020,AISI304,AISI316,andDuplex2205steelsat
+2
+differentcurrentsandshieldinggascompositions.Theresultsshowasignificantincreaseinthedepthofpenetrationandreductioninthe
+width-to-penetration ratio using the activated flux for all the workpiece materials considered here. | Current increases the depth of
+penetration,however,theinfluenceoffluxbecomesmoresignificantwithhigherweldingcurrent.Maximumof37.8%,44.3%,47%,and
+124%increaseindepthsofpenetrationismeasuredforAISI1020,AISI304,AISI316,andDuplex2205steels,respectively,whenactivated
+fluxisused.Also,maximumof70%increaseinthedepthofpenetrationisfurtherachievedwhenAralongwith5%H isusedastheshield-
+2
+inggascomparedtothatwhenpureArisused.Theconstrictionofarccolumnincreasestheenergydensity,whichincreasesthedepthof
+penetration.MeasurementofmicrohardnessandmetallurgicalobservationsarecarriedoutforsamplesafterTIGweldingandactivated
+tungsteninertgas(ATIG)weldingandcomparedtoobservethesolidificationphenomenonduringtheprocess. | Keywords Activatedflux;Arc-column;Current;Gas;Microstructure;Penetration;Shielding;Steels;TIG. | INTRODUCTION reasonably and increases bead penetration marginally
+in comparison to argon. | A modification over the con-
+Gas tungsten arc welding (GTAW) or tungsten inert
+ventional TIG where a fine layer of activated flux
+gas (TIG) welding is one of the commonly used fusion
+welding processes capable of producing high quality (called activated TIG; ATIG) is used, increases the
+penetration depth."
+Activated TIG welding of IN617-P91.pdf,"2026, 617, 500, 617, 91, 0.09, 1, 4., 91, 91","9, 270, 5, 270, 6",1,,7.49,"8, 3, 7, 2, 3, 2, 3, 8, 175, 207",,"A-TIG welding trials were conducted on an 8 mm thick plate, and complete penetration was
+achieved using this optimized flux configuration. | Although GTAW offers numerous benefits, it has certain limita-
+because it produces strong, seamless joints that are less susceptible to tions, particularly regarding depth of penetration. | Gas tungsten arc welding (GTAW) that GTAW of steel usually restrict complete depth of penetration in the
+uses a non-consumable tungsten electrode; while using novel gases such weld joint with a maximum thickness of 3 mm with a slower welding
+as helium (He) or argon (Ar), the inert gas provides the protection of the speed. | M a t e r i a l s T o d a y C o m m u n i c a t i o ns 51 (2026) 114863
+helium mixture depth of penetration can be slightly increased, i.e., high-quality joining of nickel-based superalloys and Ferritic steels [25]. | The possibility of increasing the depth of penetration by A-TIG helps to overcome the limitations of conventional TIG welding."
+Performance of activated TIG welding in 304 austenitic.pdf,"304, 304, 304, 160, 80, 140, 140, 140, 2",,100,,3,"319, 198, 232",,"The
+results indicated that there was a significant increase in penetration depth on using metal oxides but Al O does not give
+2 3
+satisfactory result. | Keywords:Activated flux, autogenous TIG welding, penetration depth, heat affected zone;
+1. | In spite of having so many advantages it
+has severe disadvantage of shallow penetration depth. | The first
+attempt toward achieving more penetration was done by E.O. | They
+named it as activated TIG welding (A-TIG) welding and found that the application thin layer of flux prior to weld
+increases the penetration up to three times."
+ATIG full.pdf,"2, 1998, 304, 608, 0.021, 300, 200, 20, 3, 220","2, 40, 10, 2.5, 1",20,,"5, 8",,3,"ATIG welding uses a thin layer of an activeflux that results in a great increase in weld penetration. | The changes in weld geometry were compared to variations in the
+electricalsignalsfromthearcandthearcshape.Theeffectofthefluxontheweldmicrostructurewasalsostudied.Theresultsindicatethat
+even thevery simple flux that was used can greatly increase the penetration of theweld bead. | Introduction partoftheshieldinggasmixture,beadpenetrationcanonly
+be increased slightly (1–2mm) [1,2]. | The capacity to
+TheTIGweldingprocess(orGTAW)isusedwhenagood improve the penetration by the selection of the shielding
+weldappearanceandahighqualityoftheweldarerequired. | However, plasma
+ThemaindisadvantagesoftheTIGprocessinclude:(a)its welding is much more complexand presents greater initial
+relatively shallow penetration capability, particularly in and operational costs than that for the TIG process."
+Electrostatic probe analysis of SiO2 activating flux powders transition.pdf,"2, 2, 2, 2022, 2, 3003, 160, 1, 2., 2","25, 3.26",,5,,,,"JournalofManufacturingProcesses84(2022)600–609
+Contents lists available at ScienceDirect
+Journal of Manufacturing Processes
+journal homepage: www.elsevier.com/locate/manpro
+Electrostatic probe analysis of SiO activating flux powders transition
+2
+behavior in Powder Pool Coupled Activating TIG alternating current arc
+plasma for aluminum alloy
+Yong Huanga,b,*, Qianpeng Lia, Xupu Xuea, Hang Xua, Jiankang Huangb,**, Ding Fana,b
+aSchool of Materials Science and Engineering, Lanzhou University of Technology, Lanzhou 730050, China
+bState Key Laboratory of Advanced Processing and Recycling of Non-Ferrous Metals, Lanzhou University of Technology, Lanzhou 730050, China
+A R T I C L E I N F O A B S T R A C T
+Keywords: In alternating current Powder Pool Coupled Activating TIG welding for aluminum alloy, activating flux powders
+Powder Pool Coupled Activating TIG are transferred into the arc-pool coupling system through the outer gas to dramatically improve the weld
+Arc plasma penetration. | The transition behavior of activating flux powders affects the weld penetration and forming
+Arc compression
+Electrostatic probe
+intensely. | Compared with
+traditional TIG welding, the transition of activating flux powders makes the arc constrict, at the same time, the
+temperature along the axial centerline of arc raises, and the arc voltage significantly increases, all of which
+contributes to the obvious increase in weld penetration through SiO2 activating flux. | However, for
+flux is coated on the surface of the welding plate to significantly increase aluminum alloys, these welding methods introducing O element through
+the weld penetration under the condition of ensuring welding quality. | The mechanism of weld penetration increasing was believed to (Powder Pool Coupled Activating TIG) welding."
+Evaluation of MIG welding process parameter using activated flux.pdf,"3, 2, 1., 5220, 350, 180, 3, 1, 2, 3","31.5, 24, 3, 6., 7",180,,,,,"The process parameters such as welding speed, current, Arc voltage and response are welding
+dimension such as depth of penetration, Bead width were studied. | AHP-MOORA and ASRS method was
+2 2 3
+applied to optimizing the MIG welding process parameters and result indicated the enhanced penetration in
+weld achieved with use of fluxes Sio, Cr O. | On the basis of present result it is considered that the centripetal
+2 2 3
+Marangoni convection & Constricted arc as a mechanism in increasing the penetration of activated MIG
+welding. | Keywords: Actiavted Mig welding , Penetration, AHP, MOORA, ASRS. | Oxide coating
+consists of iron, chromium, silicon, titanium, manganese, nickel, cobalt, molybdenum and calcium
+are reported to improve weld ability and increase the welding speed [1].Modnesi and Eusta [2]
+studiedpenetration can be obtained in A-TIG welding using activated Fluxes.Shanping and
+Hidetoshi [3] studied Cu O has a narrow effective flux-quantity range for the deep penetration."
+Activating flux tungsten inert gas welding for enhanced weld.pdf,"2016, 2016, 7, 2., 3., 2.2, 2.3, 4, 2., 1","3., 7., 13., 32., 34., 2014.",0.75,"50, 76, 47",6,,,"Journal of Manufacturing Processes 22 (2016) 211–228
+Contents lists available at ScienceDirect
+Journal of Manufacturing Processes
+j ourna l h o me page: www.elsevier.com/locate/manpro
+Review
+Activating flux tungsten inert gas welding for enhanced weld
+penetration
+R.S. | Despite
+capable of offering a penetration up to 5–6 mm in a single pass weld, it could not find enough space in
+industrial applications, primarily due to few inherent unfavorable features: (a) two-step nature of the
+process, (b) poor weld-bead and (c) poor electrode life. | High penetration capability of A-TIG process has
+fascinated researchers and renewed the research interest in last one decade. | In the present work, attempts
+have been made to analyze and review the literature published with respect to (a) advancement of various
+hypotheses to explain the reasons for high penetration achieved using A-TIG, (b) effect of input process
+parameters related to GTAW and A-TIG, (c) effect of chemical composition and various alloying elements
+in steel on penetration achieved by A-TIG, (d) feasibility studies of A-TIG on ferrous and non-ferrous
+metals and (e) technological problems associated with A-TIG. | Recent development in TIG process to enhance the depth of penetration ."
+Study of the characteristics of duplex stainless steel activated tungsten inert.pdf,"6, 3, 200, 2, 2, 2, 4, 3, 5, 4",,150,,,,,"MaterialsandDesign32(2011)255–263
+ContentslistsavailableatScienceDirect
+Materials and Design
+journal homepage: www.elsevier.com/locate/matdes
+Study of the characteristics of duplex stainless steel activated tungsten inert
+gas welds
+Tsann-Shyi Cherna, Kuang-Hung Tsengb,*, Hsien-Lung Tsaia
+aDepartmentofMechanicalEngineering,NationalTaiwanUniversityofScienceandTechnology,Taipei106,Taiwan
+bDepartmentofMaterialsEngineering,NationalPingtungUniversityofScienceandTechnology,Pingtung912,Taiwan
+a r t i c l e i n f o a b s t r a c t
+Articlehistory: Thepurposeofthisstudyistoinvestigatetheeffectsofthespecificfluxesusedinthetungsteninertgas
+Received6April2010 (TIG)processonsurfaceappearance,weldmorphology,angulardistortion,mechanicalproperties,and
+Accepted31May2010 microstructureswhenwelding6mmthickduplexstainlesssteel.Thisstudyappliesanovelvariantof
+Availableonline4June2010
+theautogenousTIGwelding,usingoxidepowders(TiO ,MnO ,SiO ,MoO ,andCr O ),tograde2205
+2 2 2 3 2 3
+stainlesssteelthroughathinlayerofthefluxtoproduceabead-on-platejoint.Experimentalresultsindi-
+Keywords: catethatusingSiO ,MoO ,andCr O fluxesleadstoasignificantincreaseinthepenetrationcapabilityof
+2 3 2 3
+A.Ferrousmetalsandalloys
+TIGwelds. | TheactivatedTIGprocess canincreasethe jointpenetrationandthe welddepth-to-width
+D.Welding
+ratio,andtendstoreducetheangulardistortionofgrade2205stainlesssteelweldment.Theweldedjoint
+G.Metallography
+alsoexhibitedgreatermechanicalstrength.Theseresultssuggestthattheplasmacolumnandtheanode
+rootareamechanismfordeterminingthemorphologyofactivatedTIGwelds. | 1.Introduction ing gas is limited to a 3mm depth for the butt-joint of stainless
+steels[10,11].Iftheweldcurrentincreasesorthetravelspeedde-
+Duplexstainlesssteeltypicallycomprisesmicrostructurescon- creases, the weld bead becomes excessively wide with relatively
+sistingofapproximatelyequalproportionsofbody-centeredcubic littlegaininthepenetrationcapability. | ferriteandface-centeredcubicaustenite.Thesetwophasespossess Therefore,itisnecessarytoimprovethepenetrationcapability
+varying affinities for alloying elements in duplex stainless steels and manufacturing productivity of TIG welding. | ically results in a 200–300% increase in penetration capability
+Thefabricationofmetalstructuresrequirestheextensiveuseof [17,20], therebyreducingweldtime,reducingcostsfor manufac-
+various metal welding processes, and welding technology is an turers,andavoidingcast-to-castvariationsinbasematerialcom-
+important part of materials development."
+Activated_flux_TIG_welding_of_stainless_steel_pipe.pdf,"2019., 1, 1., 4, 2, 3, 3, 4, 4, 1","4, 8., 16.","400, 200",,,,,"The results show that the flux influences a
+significant increase in penetration depth, up to the full penetration, which has a positive effect on the
+increase in the tensile and bending properties of the weld metal. | Keywords: orbital welding, oxide coating, mechanical properties, depth of welding
+Highlights:
+• 20 nm TiO nano particles proved effective in increasing the penetration. | In A-TIG process, penetration is
+increased, a lower electric energy consumption is achieved, no V-preparation and consumables are
+needed. | the increase in weld penetration can be attributed to the
+reversal of Marangoni convection [11,18]. | They found that particle size of Al O
+2 3
+does not have a significant influence on penetration, unlike SiO ."
