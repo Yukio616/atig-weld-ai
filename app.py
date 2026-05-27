@@ -1,17 +1,10 @@
-# =========================================================
-# AI TIG / A-TIG WELD PREDICTION PLATFORM
-# =========================================================
-
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.express as px
-import matplotlib.pyplot as plt
-from matplotlib.patches import Polygon
+import plotly.graph_objects as go
+from PIL import Image
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
-import joblib
-import os
 
 # =========================================================
 # PAGE CONFIG
@@ -19,7 +12,6 @@ import os
 
 st.set_page_config(
     page_title="AI TIG Weld Prediction",
-    page_icon="⚡",
     layout="wide"
 )
 
@@ -30,645 +22,467 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-.stApp{
-    background:#050816;
-}
-
-header{
-    visibility:hidden;
-}
-
-footer{
-    visibility:hidden;
-}
-
-html, body, [class*="css"]{
+html, body, [class*="css"] {
+    background-color:#020617;
     color:white;
+    font-family:'Segoe UI';
 }
 
-/* TITLE */
-
-.big-title{
-    font-size:62px;
-    font-weight:800;
-    color:white;
-    line-height:1.15;
+.block-container{
+    padding-top:1rem;
+    padding-left:3rem;
+    padding-right:3rem;
 }
 
-.sub-title{
-    font-size:30px;
+h1,h2,h3,h4{
     color:#7dd3fc;
-    font-weight:600;
 }
 
-.description{
-    font-size:21px;
-    color:#d1d5db;
-    line-height:2;
-}
-
-/* SECTION */
-
-.section-title{
-    font-size:42px;
-    font-weight:800;
-    color:#7dd3fc;
-    margin-top:30px;
-}
-
-/* CARD */
-
-.card{
-
+.stSelectbox div[data-baseweb="select"]{
     background:#111827;
-
-    border-radius:25px;
-
-    padding:30px;
-
-    border:1px solid #1f2937;
-
-    box-shadow:0px 0px 25px rgba(0,0,0,0.35);
-
-    height:100%;
+    border-radius:15px;
 }
 
-.card h2{
-    color:#7dd3fc;
-    font-size:30px;
+.stSlider > div > div{
+    color:#38bdf8;
 }
 
-.card ul{
-    color:#f3f4f6;
-    font-size:20px;
-    line-height:2;
-}
-
-/* METRIC */
-
-[data-testid="stMetric"]{
-
-    background:#111827;
-
+.metric-card{
+    background:linear-gradient(135deg,#111827,#1e293b);
+    padding:25px;
     border-radius:20px;
+    border:1px solid #334155;
+    text-align:center;
+    box-shadow:0px 4px 15px rgba(0,0,0,0.3);
+}
 
+.glow{
+    color:#7dd3fc;
+    text-shadow:0px 0px 15px #38bdf8;
+}
+
+.slide-card{
+    background:#0f172a;
     padding:20px;
-
-    border:1px solid #1f2937;
-}
-
-/* BUTTON */
-
-.stButton>button{
-
-    background:linear-gradient(
-        135deg,
-        #2563eb,
-        #38bdf8
-    );
-
-    color:white;
-
-    border:none;
-
-    border-radius:16px;
-
-    height:60px;
-
-    font-size:22px;
-
-    font-weight:700;
-
-    box-shadow:0px 0px 20px rgba(56,189,248,0.4);
-}
-
-/* SELECT */
-
-.stSelectbox > div > div{
-
-    background:#111827;
-
-    color:white;
-
-    border-radius:12px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    .big-title{
-        font-size:38px;
-    }
-
-    .sub-title{
-        font-size:20px;
-    }
-
-    .description{
-        font-size:17px;
-    }
-
-    .section-title{
-        font-size:30px;
-    }
-
-    .card ul{
-        font-size:17px;
-    }
+    border-radius:25px;
+    border:1px solid #334155;
+    box-shadow:0px 4px 20px rgba(56,189,248,0.15);
 }
 
 </style>
 """, unsafe_allow_html=True)
 
 # =========================================================
-# HEADER
+# LOAD LOGOS
 # =========================================================
 
-left_logo, center_logo, right_logo = st.columns([1,5,1])
+col1, col2, col3 = st.columns([1,4,1])
 
-with left_logo:
+with col1:
+    st.image("assets/CEG_col1.png", width=120)
 
-    if os.path.exists("assets/CEG_col1.png"):
-        st.image("assets/CEG_col1.png", width=120)
-
-with center_logo:
+with col2:
 
     st.markdown("""
     <div style="
-        background:linear-gradient(
-            135deg,
-            #111827,
-            #1e293b
-        );
+    background:linear-gradient(135deg,#111827,#1e293b);
+    border-radius:30px;
+    padding:50px;
+    text-align:center;
+    border:1px solid #374151;
+    box-shadow:0px 8px 25px rgba(0,0,0,0.3);
+    ">
 
-
-
-    <div class="big-title">
+    <h1 style="
+    font-size:65px;
+    color:white;
+    margin-bottom:15px;
+    ">
     AI-Based TIG / A-TIG<br>
     Weld Prediction
-    </div>
+    </h1>
+
+    <h2 style="
+    font-size:24px;
+    color:#7dd3fc;
+    ">
+    AI-Assisted Smart Welding Platform
+    </h2>
+
+    <p style="
+    color:#d1d5db;
+    font-size:20px;
+    line-height:2;
+    ">
+
+    Machine Learning • Nano Oxide Fluxes • A-TIG Welding • SS304 Research
 
     <br>
 
-    <div class="sub-title">
-    Nano Oxide Activated Fluxes for SS304 Welding
-    </div>
+    Anna University • IIT Indore
 
-    <br><br>
+    </p>
 
-    <div class="description">
-    AI-assisted weld penetration prediction platform integrating
-    welding metallurgy, nano oxide activated fluxes,
-    penetration trend visualization and intelligent
-    machine learning analysis.
-    </div>
+    <p style="
+    color:#94a3b8;
+    font-size:18px;
+    ">
+    Developed by Harsha Varthanan
+    </p>
 
     </div>
     """, unsafe_allow_html=True)
 
-with right_logo:
-
-    if os.path.exists("assets/iiti.png"):
-        st.image("assets/iiti.png", width=120)
+with col3:
+    st.image("assets/iiti.png", width=120)
 
 # =========================================================
-# LITERATURE SLIDES
+# INTRO
 # =========================================================
+
+st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""
-<div class="section-title">
-📘 Presentation Slides
+<div style="
+background:#0f172a;
+padding:30px;
+border-radius:25px;
+border:1px solid #334155;
+">
+
+<h2 class="glow">AI-Assisted Welding Metallurgy Platform</h2>
+
+<p style="font-size:20px; line-height:2; color:#d1d5db;">
+
+This platform combines welding metallurgy,
+nano oxide activated fluxes,
+machine learning prediction,
+and penetration trend visualization
+for intelligent A-TIG weld analysis.
+
+</p>
+
+</div>
 """, unsafe_allow_html=True)
 
-slide_images = []
+# =========================================================
+# SLIDES
+# =========================================================
 
-for i in range(1,12):
+st.markdown("<br>", unsafe_allow_html=True)
 
-    path = f"papers/slide{i}.png"
+st.markdown("""
+<h1 class="glow">
+📘 Literature Survey Slides
+</h1>
+""", unsafe_allow_html=True)
 
-    if os.path.exists(path):
-        slide_images.append(path)
+slide_files = [
+    "papers/slide1.png",
+    "papers/slide2.png",
+    "papers/slide3.png",
+    "papers/slide4.png",
+    "papers/slide5.png",
+    "papers/slide6.png",
+    "papers/slide7.png",
+    "papers/slide8.png",
+    "papers/slide9.png",
+    "papers/slide10.png",
+    "papers/slide11.png"
+]
 
 if "slide_index" not in st.session_state:
     st.session_state.slide_index = 0
 
-left_btn, center_img, right_btn = st.columns([1,8,1])
+c1, c2, c3 = st.columns([1,8,1])
 
-with left_btn:
-
-    if st.button("⬅"):
+with c1:
+    if st.button("⬅️"):
         st.session_state.slide_index -= 1
+        if st.session_state.slide_index < 0:
+            st.session_state.slide_index = len(slide_files)-1
 
-with right_btn:
-
-    if st.button("➡"):
+with c3:
+    if st.button("➡️"):
         st.session_state.slide_index += 1
+        if st.session_state.slide_index >= len(slide_files):
+            st.session_state.slide_index = 0
 
-if len(slide_images) > 0:
-
-    if st.session_state.slide_index < 0:
-        st.session_state.slide_index = len(slide_images)-1
-
-    if st.session_state.slide_index >= len(slide_images):
-        st.session_state.slide_index = 0
-
-    with center_img:
-
-        st.markdown("""
-        <div style="
-            background:#111827;
-            border-radius:25px;
-            padding:12px;
-            box-shadow:0px 0px 25px rgba(56,189,248,0.2);
-        ">
-        """, unsafe_allow_html=True)
-
-        st.image(
-            slide_images[st.session_state.slide_index],
-            use_container_width=True
-        )
-
-        st.markdown("</div>", unsafe_allow_html=True)
-
-else:
-
-    st.warning("Add slide images inside papers folder")
+with c2:
+    st.markdown('<div class="slide-card">', unsafe_allow_html=True)
+    st.image(slide_files[st.session_state.slide_index], use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # =========================================================
-# OVERVIEW
+# LOAD DATASET
 # =========================================================
 
-st.markdown("""
-<div class="section-title">
-⚡ TIG vs A-TIG Welding
-</div>
-""", unsafe_allow_html=True)
+df = pd.read_csv("final_atig_dataset.csv")
 
-left,right = st.columns(2)
+# =========================================================
+# ENCODING
+# =========================================================
 
-with left:
+material_encoder = LabelEncoder()
+flux_encoder = LabelEncoder()
 
-    st.markdown("""
-    <div class="card">
+df["Material_encoded"] = material_encoder.fit_transform(df["Material"])
+df["Flux_encoded"] = flux_encoder.fit_transform(df["Flux"])
 
-    <h2>Conventional TIG Welding</h2>
+# =========================================================
+# FEATURES
+# =========================================================
 
-    <ul>
-    <li>Limited penetration depth</li>
-    <li>Wide weld bead morphology</li>
-    <li>Higher thermal distortion</li>
-    <li>Larger heat affected zone</li>
-    <li>Multiple welding passes required</li>
+X = df[
+    [
+        "Current",
+        "Voltage",
+        "TravelSpeed",
+        "Material_encoded",
+        "Flux_encoded"
+    ]
+]
 
-    </ul>
+y = df["PenetrationDepth"]
 
-    </div>
-    """, unsafe_allow_html=True)
+# =========================================================
+# RANDOM FOREST MODEL
+# =========================================================
 
-with right:
+model = RandomForestRegressor(
+    n_estimators=200,
+    max_depth=8,
+    random_state=42
+)
 
-    st.markdown("""
-    <div class="card">
-
-    <h2>A-TIG Welding</h2>
-
-    <ul>
-
-    <li>Reverse Marangoni convection</li>
-    <li>Arc constriction mechanism</li>
-    <li>Deeper weld penetration</li>
-    <li>Narrow weld bead profile</li>
-    <li>Improved welding efficiency</li>
-
-    </ul>
-
-    </div>
-    """, unsafe_allow_html=True)
+model.fit(X, y)
 
 # =========================================================
 # PARAMETERS
 # =========================================================
 
+st.markdown("<br>", unsafe_allow_html=True)
+
 st.markdown("""
-<div class="section-title">
-⚙ Welding Parameters
-</div>
+<h1 class="glow">
+⚙️ Welding Parameters
+</h1>
 """, unsafe_allow_html=True)
 
-c1,c2 = st.columns(2)
+col1, col2 = st.columns(2)
 
-with c1:
+with col1:
+    current = st.slider("Current (A)", 90, 160, 120)
+    voltage = st.slider("Voltage (V)", 9, 15, 12)
 
-    current = st.slider(
-        "Current (A)",
-        90,
-        160,
-        120
-    )
-
-    voltage = st.slider(
-        "Voltage (V)",
-        9,
-        15,
-        12
-    )
-
-with c2:
-
-    speed = st.slider(
-        "Travel Speed (mm/min)",
-        80,
-        200,
-        120
-    )
+with col2:
+    speed = st.slider("Travel Speed (mm/min)", 50, 300, 120)
 
     material = st.selectbox(
         "Material",
-        [
-            "SS304",
-            "SS316",
-            "Duplex 2205"
-        ]
+        sorted(df["Material"].unique())
     )
 
 flux = st.selectbox(
     "Flux Type",
-    [
-        "No Flux",
-        "Fe2O3",
-        "Al2O3",
-        "Cr2O3",
-        "TiO2",
-        "SiO2",
-        "TiO2+SiO2",
-        "TiO2+Al2O3",
-        "SiO2+Cr2O3"
-    ]
+    sorted(df["Flux"].unique())
 )
-
-# =========================================================
-# RANDOM FOREST
-# =========================================================
-
-if os.path.exists("tig_model.pkl"):
-
-    model = joblib.load("tig_model.pkl")
-    encoder = joblib.load("flux_encoder.pkl")
-
-else:
-
-    dataset = pd.read_csv("final_atig_dataset.csv")
-
-    encoder = LabelEncoder()
-
-    dataset["flux_encoded"] = encoder.fit_transform(
-        dataset["flux"]
-    )
-
-    X = dataset[
-        [
-            "current_A",
-            "voltage_V",
-            "travel_speed",
-            "flux_encoded"
-        ]
-    ]
-
-    y = dataset["penetration_mm"]
-
-    model = RandomForestRegressor(
-        n_estimators=200,
-        random_state=42
-    )
-
-    model.fit(X,y)
-
-    joblib.dump(model,"tig_model.pkl")
-    joblib.dump(encoder,"flux_encoder.pkl")
 
 # =========================================================
 # PREDICTION
 # =========================================================
 
-try:
-    flux_encoded = encoder.transform([flux])[0]
-except:
-    flux_encoded = 0
+material_encoded = material_encoder.transform([material])[0]
+flux_encoded = flux_encoder.transform([flux])[0]
 
-input_df = pd.DataFrame({
-
-    "current_A":[current],
-    "voltage_V":[voltage],
-    "travel_speed":[speed],
-    "flux_encoded":[flux_encoded]
+input_data = pd.DataFrame({
+    "Current":[current],
+    "Voltage":[voltage],
+    "TravelSpeed":[speed],
+    "Material_encoded":[material_encoded],
+    "Flux_encoded":[flux_encoded]
 })
 
-prediction = model.predict(input_df)[0]
+prediction = model.predict(input_data)[0]
+
+prediction = round(prediction,2)
 
 # =========================================================
-# METALLURGY FACTORS
+# HEAT INPUT
 # =========================================================
 
-flux_factor = {
+heat_input = round(
+    ((voltage * current * 60)/(1000 * speed)),
+    2
+)
 
-    "No Flux":1.0,
-    "Fe2O3":1.15,
-    "Al2O3":1.28,
-    "Cr2O3":1.45,
-    "TiO2":1.85,
-    "SiO2":2.05,
-    "TiO2+SiO2":2.15,
-    "TiO2+Al2O3":1.95,
-    "SiO2+Cr2O3":2.0
-}
+# =========================================================
+# RELATIVE INCREASE
+# =========================================================
 
-prediction *= flux_factor.get(flux,1)
+base_df = df[df["Flux"] == "No Flux"]
 
-prediction = max(1.5,prediction)
-prediction = min(14,prediction)
+if len(base_df) > 0:
+    baseline = base_df["PenetrationDepth"].mean()
+else:
+    baseline = prediction
 
-heat_input = (
-    voltage * current * 60
-)/(1000*speed)
-
-relative = ((prediction-3)/3)*100
+increase = ((prediction-baseline)/baseline)*100
+increase = round(increase,1)
 
 # =========================================================
 # RESULTS
 # =========================================================
 
+st.markdown("<br>", unsafe_allow_html=True)
+
 st.markdown("""
-<div class="section-title">
+<h1 class="glow">
 📊 Prediction Results
-</div>
+</h1>
 """, unsafe_allow_html=True)
 
-m1,m2,m3 = st.columns(3)
+m1, m2, m3 = st.columns(3)
 
 with m1:
-    st.metric(
-        "Penetration Depth",
-        f"{prediction:.2f} mm"
-    )
+    st.markdown(f"""
+    <div class="metric-card">
+    <h3>Penetration Depth</h3>
+    <h1>{prediction} mm</h1>
+    </div>
+    """, unsafe_allow_html=True)
 
 with m2:
-    st.metric(
-        "Relative Increase",
-        f"{relative:.1f}%"
-    )
+    st.markdown(f"""
+    <div class="metric-card">
+    <h3>Relative Increase</h3>
+    <h1>{increase}%</h1>
+    </div>
+    """, unsafe_allow_html=True)
 
 with m3:
-    st.metric(
-        "Heat Input",
-        f"{heat_input:.2f} kJ/mm"
-    )
+    st.markdown(f"""
+    <div class="metric-card">
+    <h3>Heat Input</h3>
+    <h1>{heat_input} kJ/mm</h1>
+    </div>
+    """, unsafe_allow_html=True)
 
 # =========================================================
-# PENETRATION GRAPH
+# GRAPH
 # =========================================================
+
+st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""
-<div class="section-title">
+<h1 class="glow">
 📈 Penetration Trend
-</div>
+</h1>
 """, unsafe_allow_html=True)
 
-currents = np.arange(90,161,10)
-
-values = []
+currents = list(range(90,161,10))
+predictions = []
 
 for c in currents:
 
-    val = (
-        (c/100)
-        * flux_factor.get(flux,1)
-        * 1.8
-    )
+    temp_input = pd.DataFrame({
+        "Current":[c],
+        "Voltage":[voltage],
+        "TravelSpeed":[speed],
+        "Material_encoded":[material_encoded],
+        "Flux_encoded":[flux_encoded]
+    })
 
-    values.append(val)
+    p = model.predict(temp_input)[0]
+    predictions.append(p)
 
-graph_df = pd.DataFrame({
+fig = go.Figure()
 
-    "Current":currents,
-    "Penetration":values
-})
-
-fig = px.line(
-    graph_df,
-    x="Current",
-    y="Penetration",
-    markers=True
-)
-
-fig.update_traces(
-    line=dict(
-        color="#38bdf8",
-        width=4
+fig.add_trace(
+    go.Scatter(
+        x=currents,
+        y=predictions,
+        mode='lines+markers',
+        line=dict(color='#38bdf8', width=5),
+        marker=dict(size=10)
     )
 )
 
 fig.update_layout(
-
-    paper_bgcolor="#111827",
-
+    template="plotly_dark",
+    height=450,
+    title="Predicted Penetration Behavior",
+    xaxis_title="Current (A)",
+    yaxis_title="Penetration Depth (mm)",
+    paper_bgcolor="#0f172a",
     plot_bgcolor="#111827",
-
-    font=dict(
-        color="white",
-        size=14
-    ),
-
-    height=350
+    font=dict(color="white")
 )
 
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
+st.plotly_chart(fig, use_container_width=True)
 
 # =========================================================
-# WELD MORPHOLOGY
+# FEATURE IMPORTANCE
 # =========================================================
+
+st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""
-<div class="section-title">
-🧬 Predicted Weld Morphology
-</div>
+<h1 class="glow">
+🧠 ML Feature Importance
+</h1>
 """, unsafe_allow_html=True)
 
-fig2, ax = plt.subplots(figsize=(4,4))
+st.image("feature_importance.png", use_container_width=True)
 
-fig2.patch.set_facecolor("#111827")
-ax.set_facecolor("#111827")
+# =========================================================
+# EXPLANATION
+# =========================================================
 
-ax.plot([-5,5],[0,0], color="white", linewidth=5)
+st.markdown("<br>", unsafe_allow_html=True)
 
-depth = prediction / 2
+st.markdown("""
+<div style="
+background:#0f172a;
+padding:30px;
+border-radius:25px;
+border:1px solid #334155;
+">
 
-if flux == "No Flux":
-    width = 4.5
+<h2 class="glow">How The AI Prediction Works</h2>
 
-elif flux in ["Fe2O3","Al2O3"]:
-    width = 3.0
+<p style="font-size:20px; line-height:2; color:#d1d5db;">
 
-elif flux == "Cr2O3":
-    width = 2.4
+• The model uses Random Forest Machine Learning.<br><br>
 
-else:
-    width = 1.7
+• It learns penetration behavior from experimental welding data.<br><br>
 
-points = np.array([
+• Parameters include:
+Current,
+Voltage,
+Travel Speed,
+Material Type,
+and Activated Flux Type.<br><br>
 
-    [-width,0],
-    [-width/2,-depth*0.4],
-    [0,-depth],
-    [width/2,-depth*0.4],
-    [width,0]
-])
+• Nano oxide fluxes such as SiO₂ and TiO₂ generally improve penetration
+through arc constriction and Marangoni convection effects.<br><br>
 
-polygon = Polygon(
-    points,
-    closed=True,
-    color="#38bdf8",
-    alpha=0.85
-)
+• The AI predicts penetration depth based on trends learned
+from the literature-derived dataset.
 
-ax.add_patch(polygon)
+</p>
 
-ax.set_xlim(-5,5)
-ax.set_ylim(-8,2)
-
-ax.grid(True,color="#374151")
-
-ax.tick_params(colors="white")
-
-ax.set_title(
-    "Predicted Weld Cross Section",
-    color="white",
-    fontsize=15
-)
-
-st.pyplot(fig2)
+</div>
+""", unsafe_allow_html=True)
 
 # =========================================================
 # LINKEDIN
 # =========================================================
 
-st.markdown("---")
+st.markdown("<br><br>", unsafe_allow_html=True)
 
 st.markdown("""
-
 <center>
-
-<h2 style="
-color:#7dd3fc;
-font-size:34px;
-">
-Connect With Me
-</h2>
-
-<br>
 
 <a href="https://www.linkedin.com/in/harsha-varthanan/"
 target="_blank"
@@ -679,21 +493,9 @@ text-decoration:none;
 font-weight:700;
 ">
 
-linkedin.com/in/harsha-varthanan/
+Connect with me on LinkedIn
 
 </a>
 
-<br><br>
-
-<p style="
-color:#9ca3af;
-font-size:18px;
-">
-
-Developed by Harsha Varthanan
-
-</p>
-
 </center>
-
 """, unsafe_allow_html=True)
